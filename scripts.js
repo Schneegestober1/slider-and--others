@@ -14,6 +14,7 @@ const fetchImages = async () => {
     loader.style.display = 'block' 
     try {
         const response = await fetch('https://picsum.photos/v2/list?page=1&limit=10')
+        // https://jsonplaceholder.typicode.com/photos как будто не работает, заменил на https://picsum.photos/v2/list?page=1&limit=10
         const images = await response.json()
         console.log(images)
 
