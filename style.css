@@ -68,3 +68,9 @@ body {
 .slider-wrapper .slide-button:hover {
     background: #444;
 }
+
+#loader {
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0;
+}

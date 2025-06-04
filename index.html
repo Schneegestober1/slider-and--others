@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -12,18 +14,8 @@
             <button class="slide-button" id="prev-slide" aria-label="Назад">
                 <img src="img/chevron-left.svg" alt="Назад">
             </button>
-            <div class="image-list">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-                <img src="img/Изображение_1.jpg" alt="img">
-            </div>
+            <div id="loader">Загрузка...</div>
+            <div id="image-list" class="image-list"></div>
             <button class="slide-button" id="next-slide" aria-label="Вперед">
                 <img src="img/chevron-right.svg" alt="Вперед">
             </button>
