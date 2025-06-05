@@ -1,3 +1,5 @@
+// Task 1
+
 const prevButton = document.getElementById('prev-slide')
 const nextButton = document.getElementById('next-slide')
 const imageList = document.querySelector('.image-list')
@@ -49,3 +51,46 @@ const slider = async () => {
 }
 
 window.addEventListener('load', slider)
+
+// Task 2
+const fioError = document.getElementById('fio-error');
+const passError = document.getElementById('pass-error');
+const fioInput = document.getElementById('fio');
+const errorIcon = document.querySelector('#fio + .fa-solid'); 
+
+function validateFio() {
+    const fio = fioInput.value.trim();
+
+    if (fio.length === 0) {
+        fioError.innerHTML = 'Fio is required';
+        fioInput.classList.add('error');
+        errorIcon.style.display = 'block';
+        return false;
+    }
+
+    if (fio.match(/\d/)) {
+        fioError.innerHTML = 'Fio cannot contain numbers';
+        fioInput.classList.add('error');
+        errorIcon.style.display = 'block';
+        return false;
+    }
+
+    if (!fio.match(/^[a-zA-Z\s]+$/)) {
+        fioError.innerHTML = 'Use only letters';
+        fioInput.classList.add('error'); 
+        errorIcon.style.display = 'block';
+        return false;
+    }
+
+    if (fio.replace(/\s/g, '').length === 0) { 
+        fioError.innerHTML = 'Fio cannot be only spaces';
+        fioInput.classList.add('error');
+        errorIcon.style.display = 'block';
+        return false;
+    }
+
+    fioError.innerHTML = '';
+    fioInput.classList.remove('error');
+    errorIcon.style.display = 'none';
+    return true;
+}
