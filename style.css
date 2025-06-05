@@ -5,21 +5,21 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: burlywood;
-    height: 90vh;
-}
+/* Task 1 SLIDER */
 
 .container {
-    max-width: 1200px;
-    width: 95%;
+    width: 100%;
+    background-color: burlywood;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slider-wrapper {
     position: relative;
+        max-width: 1200px;
+    width: 100%;
 }
 
 .slider-wrapper .image-list {
@@ -74,3 +74,10 @@ body {
     text-align: center;
     margin: 20px 0;
 }
+
+.form {
+    width: 100%;
+    height: 100vh;
+    background: red;
+}
+
