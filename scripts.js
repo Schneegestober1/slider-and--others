@@ -54,9 +54,12 @@ window.addEventListener('load', slider)
 
 // Task 2
 const fioError = document.getElementById('fio-error');
-const passError = document.getElementById('pass-error');
 const fioInput = document.getElementById('fio');
 const errorIcon = document.querySelector('#fio + .fa-solid'); 
+
+const passError = document.getElementById('pass-error');
+const passInput = document.getElementById('pass')
+const passIcon = document.querySelector('#pass + .fa-solid')
 
 function validateFio() {
     const fio = fioInput.value.trim();
@@ -93,4 +96,60 @@ function validateFio() {
     fioInput.classList.remove('error');
     errorIcon.style.display = 'none';
     return true;
+}
+
+function validatePass() {
+    const pass = passInput.value.trim()
+
+    if (pass.length === 0) {
+        passError.innerHTML = 'Password is required'
+        passInput.classList.add('error')
+        passIcon.style.display = 'block'
+        return false
+    }
+
+    if (pass.replace(/\s/g, '').length === 0) {
+        passError.innerHTML = 'Password cannot be only spaces'
+        passInput.classList.add('error')
+        passIcon.style.display = 'block'
+        return false
+    }
+
+    if (pass.length < 8) {
+        passError.innerHTML = 'Password must be at least 8 characters long'
+        passInput.classList.add('error')
+        passIcon.style.display = 'block'
+        return false
+    }
+    
+    if (!pass.match(/[a-zA-Z]/) || !pass.match(/\d/)) {
+        passError.innerHTML = 'Password must contain at least one letter and one number'
+        passInput.classList.add('error')
+        passIcon.style.display = 'block'
+        return false
+    }
+
+    if (!pass.match(/[!@#$%^&*(),.?":{}|<>]/)) {
+        passError.innerHTML = 'Password must contain at least one special character'
+        passInput.classList.add('error')
+        passIcon.style.display = 'block'
+        return false
+    }
+
+    passError.innerHTML = ''
+    passInput.classList.remove('error')
+    passIcon.style.display = 'none'
+    return true
+}
+
+function validateForm(e) {
+    const isFioValid = validateFio()
+    const isPassValid = validatePass()
+
+    if (!isFioValid || ! isPassValid) {
+        e.preventDefault()
+        return false
+    }
+
+    return true
 }

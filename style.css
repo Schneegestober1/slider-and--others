@@ -135,7 +135,6 @@
     background-color: #fffacd;
 }
 
-
 .button-box {
     margin-top: 20px;
     display: flex;
@@ -154,6 +153,12 @@
 }
 
 #fio-error {
+    color: red;
+    padding-left: 10px;
+    tab-size: 10px;
+}
+
+#pass-error {
     color: red;
     padding-left: 10px;
     tab-size: 10px;

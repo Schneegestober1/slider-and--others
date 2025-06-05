@@ -27,7 +27,7 @@
         
         <!-- Task 2 FORM  -->
         <section class="form-container">
-            <form class="form">
+            <form class="form" onsubmit="return validateForm(event)">
                 <h3>Contact Information</h3>
                 <div class="input-group">
                     <label for="fio">FIO <span>*</span></label>
@@ -37,13 +37,13 @@
                 </div>
                 <div class="input-group">
                     <label for="pass">Your Password <span>*</span></label>
-                    <input type="text" id="pass" class="input-field" placeholder="Enter your Password">
+                    <input type="text" id="pass" class="input-field" placeholder="Enter your Password" onkeyup="validatePass()">
+                    <i class="fa-solid fa-circle-exclamation"></i>
                     <span id="pass-error"></span>
                 </div>
                 <div class="button-box">
-                    <button class="form-button">Continue</button>
+                    <button class="form-button" >Continue</button>
                 </div>
-
             </form>
         </section>
 
