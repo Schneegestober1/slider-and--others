@@ -229,7 +229,6 @@ async function fetchCurrency() {
             currencyList.appendChild(li)
         }
 
-        loaderEl.style.display = 'none'
         saveUpdateTime()
         showTimeAgo()
 
