@@ -167,3 +167,78 @@ const listItems = document.querySelectorAll('.list-item')
     })
 
 })
+
+// Task 4
+
+const API_URL = 'https://api.freecurrencyapi.com/v1/latest'
+const API_KEY = 'fca_live_Wo8bEbi8aZVX2TRzHa9Gs1eXJQGsG4qwIy7ueWea'
+
+const currencies = ['USD', 'EUR', 'JPY', 'CNY', 'CAD', 'CHF']
+const baseCurrency = 'RUB'
+
+const UPDATE_INTERVAL = 15 * 60 * 1000
+const TIME_KEY = 'lastCurrencyUpdate'
+
+const currencyList = document.getElementById('currency-list')
+const timeAgoEl = document.getElementById('time-ago')
+
+function saveUpdateTime() {
+    localStorage.setItem(TIME_KEY, Date.now())
+}
+
+function getMinutesAgo() {
+    const lastUpdate = localStorage.getItem(TIME_KEY)
+
+    if(!lastUpdate) return null
+
+    const diffMs = Date.now() - Number(lastUpdate)
+    return Math.floor(diffMs / 6000)
+}
+
+function showTimeAgo() {
+    const minuteAgo = getMinutesAgo()
+
+    if (minuteAgo === null) {
+        timeAgoEl.textContent = 'только что'
+    } else if (minuteAgo === 0) {
+        timeAgoEl.textContent = 'менее минуты назад'
+    } else {
+        timeAgoEl.textContent = `${minuteAgo} мин назад`
+    }
+}
+
+async function fetchCurrency() {
+    try {
+        const response = await axios.get(API_URL, {
+            params: {
+                apikey: API_KEY,
+                currencies: currencies.join(','),
+                base_currency: baseCurrency,
+            }
+        })
+
+        const rawCurr = response.data.data
+
+        for (const [currency, value] of Object.entries(rawCurr)) {
+            const rate = 1 / value
+            const li = document.createElement('li')
+            li.classList.add('currency-item')
+            li.innerHTML = `<strong>${currency}</strong>: ${rate.toFixed(2)}`
+            currencyList.appendChild(li)
+        }
+
+        saveUpdateTime()
+        showTimeAgo()
+
+    } catch (error) {
+        console.error('Ошибка при получении курсов валют:', error)
+        showTimeAgo();
+    }
+}
+
+  showTimeAgo();
+
+  fetchCurrency();
+
+  setInterval(fetchCurrency, UPDATE_INTERVAL);
+
