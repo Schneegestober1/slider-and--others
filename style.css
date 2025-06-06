@@ -208,4 +208,68 @@ li {
 }
 
 
+/* Task 4 */
+.converter {
+    width: 100%;
+    height: 100vh;
+    background-color: #659cee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.wrapper-converter {
+    background-color: rgb(247, 247, 247);
+    width: 800px;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(23, 23, 23)
+}
+
+.wrapper-converter p {
+    padding-top: 20px;
+}
+
+.title-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-box p:nth-child(2) {
+    font-size: 10px;
+    font-weight: 100;
+}
+
+.currency-table h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.currency-list {
+    width: 400px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.courses-box {
+    margin-top: 20px;
+}
+
+.courses-box a {
+    text-decoration: none;
+    color: #659cee;
+}
+
+.currency-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.currency-box i {
+   font-size: 50px;
+    color: #659cee;
+}
