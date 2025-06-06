@@ -181,6 +181,7 @@ const TIME_KEY = 'lastCurrencyUpdate'
 
 const currencyList = document.getElementById('currency-list')
 const timeAgoEl = document.getElementById('time-ago')
+const loaderEl = document.getElementById('loader-currency');
 
 function saveUpdateTime() {
     localStorage.setItem(TIME_KEY, Date.now())
@@ -209,6 +210,7 @@ function showTimeAgo() {
 
 async function fetchCurrency() {
     try {
+        loaderEl.style.display = 'block';  
         const response = await axios.get(API_URL, {
             params: {
                 apikey: API_KEY,
@@ -227,12 +229,16 @@ async function fetchCurrency() {
             currencyList.appendChild(li)
         }
 
+        loaderEl.style.display = 'none'
         saveUpdateTime()
         showTimeAgo()
+
 
     } catch (error) {
         console.error('Ошибка при получении курсов валют:', error)
         showTimeAgo();
+    } finally {
+        loaderEl.style.display = 'none'; 
     }
 }
 
