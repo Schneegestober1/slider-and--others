@@ -53,48 +53,48 @@ const slider = async () => {
 window.addEventListener('load', slider)
 
 // Task 2
-const fioError = document.getElementById('fio-error');
-const fioInput = document.getElementById('fio');
-const errorIcon = document.querySelector('#fio + .fa-solid'); 
+const fioError = document.getElementById('fio-error')
+const fioInput = document.getElementById('fio')
+const errorIcon = document.querySelector('#fio + .fa-solid');
 
-const passError = document.getElementById('pass-error');
+const passError = document.getElementById('pass-error')
 const passInput = document.getElementById('pass')
 const passIcon = document.querySelector('#pass + .fa-solid')
 
 function validateFio() {
-    const fio = fioInput.value.trim();
+    const fio = fioInput.value.trim()
 
     if (fio.length === 0) {
-        fioError.innerHTML = 'Fio is required';
-        fioInput.classList.add('error');
-        errorIcon.style.display = 'block';
+        fioError.innerHTML = 'Fio is required'
+        fioInput.classList.add('error')
+        errorIcon.style.display = 'block'
         return false;
     }
 
     if (fio.match(/\d/)) {
-        fioError.innerHTML = 'Fio cannot contain numbers';
-        fioInput.classList.add('error');
-        errorIcon.style.display = 'block';
+        fioError.innerHTML = 'Fio cannot contain numbers'
+        fioInput.classList.add('error')
+        errorIcon.style.display = 'block'
         return false;
     }
 
     if (!fio.match(/^[a-zA-Z\s]+$/)) {
-        fioError.innerHTML = 'Use only letters';
-        fioInput.classList.add('error'); 
-        errorIcon.style.display = 'block';
+        fioError.innerHTML = 'Use only letters'
+        fioInput.classList.add('error')
+        errorIcon.style.display = 'block'
         return false;
     }
 
     if (fio.replace(/\s/g, '').length === 0) { 
-        fioError.innerHTML = 'Fio cannot be only spaces';
-        fioInput.classList.add('error');
-        errorIcon.style.display = 'block';
+        fioError.innerHTML = 'Fio cannot be only spaces'
+        fioInput.classList.add('error')
+        errorIcon.style.display = 'block'
         return false;
     }
 
-    fioError.innerHTML = '';
-    fioInput.classList.remove('error');
-    errorIcon.style.display = 'none';
+    fioError.innerHTML = ''
+    fioInput.classList.remove('error')
+    errorIcon.style.display = 'none'
     return true;
 }
 
@@ -182,7 +182,7 @@ const TIME_KEY = 'lastCurrencyUpdate'
 
 const currencyList = document.getElementById('currency-list')
 const timeAgoEl = document.getElementById('time-ago')
-const loaderEl = document.getElementById('loader-currency');
+const loaderEl = document.getElementById('loader-currency')
 
 function saveUpdateTime() {
     localStorage.setItem(TIME_KEY, Date.now())
@@ -247,6 +247,8 @@ async function fetchCurrency() {
   fetchCurrency();
 
   setInterval(fetchCurrency, UPDATE_INTERVAL);
+
+
 
 //   Task 5
 const buttonUp = document.getElementById('up')
