@@ -171,6 +171,7 @@ const listItems = document.querySelectorAll('.list-item')
 // Task 4
 
 const API_URL = 'https://api.freecurrencyapi.com/v1/latest'
+// Тут апишка платная, взял другую 
 const API_KEY = 'fca_live_Wo8bEbi8aZVX2TRzHa9Gs1eXJQGsG4qwIy7ueWea'
 
 const currencies = ['USD', 'EUR', 'JPY', 'CNY', 'CAD', 'CHF']
@@ -247,3 +248,22 @@ async function fetchCurrency() {
 
   setInterval(fetchCurrency, UPDATE_INTERVAL);
 
+//   Task 5
+const buttonUp = document.getElementById('up')
+
+window.addEventListener('scroll', () => {
+    if(window.scrollY > 3100) {
+        buttonUp.classList.add('show')
+    } else {
+        buttonUp.classList.remove('show')
+    }
+})
+
+buttonUp.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+})
+
+console.log(document.documentElement.scrollHeight)
